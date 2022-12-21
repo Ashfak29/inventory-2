@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Constents from "../../../Constents";
 
 const ExpenseType = () => {
     const [expenseType,setExpenseType]=useState([]);
@@ -9,7 +10,7 @@ const ExpenseType = () => {
         const expenseType = {
             name: name,
         }
-        fetch('http://192.168.0.110:8000/api/expense-type', {
+        fetch(Constents.BASE_URL+'/expense-type', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -24,7 +25,7 @@ const ExpenseType = () => {
 
     }
     useEffect(() => {
-        fetch('http://192.168.0.110:8000/api/expense-type')
+        fetch(Constents.BASE_URL+'/expense-type')
             .then((response) => response.json())
             .then((data) => {
                 // setCurrent(!current)

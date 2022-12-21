@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Constents from "../../../Constents";
 
 const AddInvestment = () => {
     const handleInvestment = (e) => {
@@ -10,7 +11,7 @@ const AddInvestment = () => {
             name: name,
             amount: amount
         }
-        fetch('http://192.168.0.110:8000/api/investment', {
+        fetch(Constents.BASE_URL+'/investment', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

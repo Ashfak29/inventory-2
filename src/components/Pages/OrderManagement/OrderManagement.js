@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Constents from "../../../Constents";
 
 const OrderManagement = () => {
     const [deliveryAgent,setDeliveryAgent]=useState([]);
@@ -19,33 +20,7 @@ const OrderManagement = () => {
     }
 
     const handleOrder = () => {
-
-        // const name = e.target.name.value
-        // const phone = e.target.phone.value
-        // const productCode = e.target.productCode.value
-        // const price = e.target.price.value
-        // const quantity = e.target.quantity.value
-        // const discount = e.target.discount.value
-        // const image = e.target.image.value
-        // const weight = e.target.weight.value
-        // const address = e.target.address.value
-        // const area = e.target.area.value
-        // const d_agent = e.target.d_agent.value
-
-        // const order = {
-        //     name: name,
-        //     phone: phone,
-        //     productCode: productCode,
-        //     price: price,
-        //     quantity: quantity,
-        //     discount: discount,
-        //     image: image,
-        //     weight: weight,
-        //     address: address,
-        //     area: area,
-        //     d_agent: d_agent,
-        // }
-        fetch('http://localhost:8000/api/order', {
+                fetch(Constents.BASE_URL+'/order', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -60,7 +35,7 @@ const OrderManagement = () => {
 
     }
     useEffect(() => {
-        fetch('http://localhost:8000/api/delivery-media')
+        fetch(Constents.BASE_URL+'/delivery-media')
             .then((response) => response.json())
             .then((data) => setDeliveryAgent(data));
     }, []);

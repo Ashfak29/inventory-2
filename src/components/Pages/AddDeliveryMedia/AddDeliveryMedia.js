@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Constents from "../../../Constents";
 
 const AddDeliveryMedia = () => {
 
@@ -11,7 +12,7 @@ const AddDeliveryMedia = () => {
             name: name,
             contact: contact
         }
-        fetch('http://192.168.0.110:8000/api/delivery-media', {
+        fetch(Constents.BASE_URL+'/delivery-media', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

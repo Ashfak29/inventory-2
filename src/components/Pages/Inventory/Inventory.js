@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
-
+import Constents from "../../../Constents";
 
 const Inventory=()=> {
     const [categorys, setCategory] = useState([]);
@@ -35,7 +34,7 @@ const Inventory=()=> {
 
        }
        console.log(productSave)
-       fetch('http://localhost:8000/api/product', {
+       fetch(Constents.BASE_URL+'/product', {
            method: "POST",
            headers: {
                'content-type': 'application/json'
@@ -50,10 +49,10 @@ const Inventory=()=> {
    }
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/category')
+        fetch(Constents.BASE_URL+'/category')
             .then((response) => response.json())
             .then((data) => setCategory(data));
-        fetch('http://localhost:8000/api/purchase-type')
+        fetch(Constents.BASE_URL+'/purchase-type')
             .then((response) => response.json())
             .then((data) => setpurchaseType(data));
     }, []);

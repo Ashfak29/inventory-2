@@ -1,4 +1,5 @@
 import React from 'react';
+import Constents from "../../../Constents";
 
 const AddCustomer = () => {
     const handleCustomer = (e) => {
@@ -14,7 +15,7 @@ const AddCustomer = () => {
             mail: mail,
             address: address
         }
-        fetch('http://192.168.0.110:8000/api/customer', {
+        fetch(Constents.BASE_URL+'/customer', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

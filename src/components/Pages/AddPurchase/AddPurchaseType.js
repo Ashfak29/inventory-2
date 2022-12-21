@@ -1,4 +1,5 @@
 import React from 'react';
+import Constents from "../../../Constents";
 
 const AddPurchaseType = () => {
     const handlePurchaseName = (e) => {
@@ -7,7 +8,7 @@ const AddPurchaseType = () => {
         const PurchaseType = {
             name: name,
         }
-        fetch('http://192.168.0.110:8000/api/purchase-type', {
+        fetch(Constents.BASE_URL+'/purchase-type', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

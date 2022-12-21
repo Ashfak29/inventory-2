@@ -1,4 +1,5 @@
 import React from 'react';
+import Constents from "../../../Constents";
 
 const AddCategory = () => {
     const handleCategoryName = (e) => {
@@ -7,7 +8,7 @@ const AddCategory = () => {
         const CategoryName = {
             name: name,
         }
-        fetch('http://192.168.0.110:8000/api/category', {
+        fetch(Constents.BASE_URL+'/category', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
