@@ -1,18 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import Constents from "../../../Constents";
+import '../Inventory/Inventory.css'
+
 
 const Inventory=()=> {
     const [categorys, setCategory] = useState([]);
     const [purchaseType, setpurchaseType] = useState([]);
+    const [picture,setPicture] = useState('')
     let image = null
     const handleImageUpload=(e)=>{
         let photo = e.target.files[0]
         let reader = new FileReader()
         reader.onloadend= ()=>{
             image = reader.result
+            setPicture(reader.result)
 }
         reader.readAsDataURL(photo)
-
+    }
+    const uploadImage =()=>{
+        document.getElementById('productImg').click()
     }
    const handleSubmit=(e)=>{
        e.preventDefault();
@@ -87,7 +93,6 @@ const Inventory=()=> {
                                 type="number"
                                 name='price'
                                 className="form-control"
-
                             />
                         </div>
                         <div className="col-md-6 mb-3">
@@ -96,7 +101,6 @@ const Inventory=()=> {
                                 type="text"
                                 name='supplier'
                                 className="form-control"
-
                             />
                         </div>
                         <div className="col-md-6 mb-3">
@@ -105,7 +109,6 @@ const Inventory=()=> {
                                 type="number"
                                 name='quantity'
                                 className="form-control"
-
                             />
                         </div>
                         <div className="col-md-6 mb-3">
@@ -113,7 +116,6 @@ const Inventory=()=> {
                             <select
                                 className="form-select"
                                 name='category_id'
-
                             >
                                 {
                                     categorys.map(cat => <option value={cat.id} key={cat.id}>{cat.name}</option>)
@@ -124,7 +126,6 @@ const Inventory=()=> {
                             <select
                                 className="form-select"
                                 name='purchase_type_id'
-
                             >
                                 {
                                     purchaseType.map(purchase => <option value={purchase.id}
@@ -135,10 +136,16 @@ const Inventory=()=> {
                         <div className=" col-md-6 mb-3">
                             <input
                                 type='file'
-                                className="form-control"
+                                className=" d-none form-control" multiple
+                                id={'productImg'}
                                 name="image"
                                 onChange={handleImageUpload}
                             />
+                            <div className={'product'} onClick={uploadImage}>
+                                <h2  style={picture !=''?{display:'none'}:{display:'block'}}>Upload Product</h2>
+                                <img src={picture} className={'img-fluid'} alt=""/>
+                            </div>
+
                         </div>
                     </div>
                     <div className='text-center'>

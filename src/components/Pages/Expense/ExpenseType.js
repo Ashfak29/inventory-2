@@ -19,16 +19,20 @@ const ExpenseType = () => {
             .then(res => res.json())
             .then(data => {
             })
+            .then(()=>{getExpense()})
             .catch(error => console.log(error))
         e.target.reset();
 
     }
-    useEffect(() => {
+    const getExpense=()=>{
         fetch(Constents.BASE_URL+'/expense-type')
             .then((response) => response.json())
             .then((data) => {
                 setExpenseType(data)
-                });
+            });
+    }
+    useEffect(() => {
+        getExpense();
     }, []);
     return (
         <div className='container'>
