@@ -17,6 +17,7 @@ const Inventory=()=> {
    const handleSubmit=(e)=>{
        e.preventDefault();
        const name = e.target.name.value
+       const product_code = e.target.product_code.value
        const price = e.target.price.value
        const supplier = e.target.supplier.value
        const quantity = e.target.quantity.value
@@ -25,6 +26,7 @@ const Inventory=()=> {
 
        const productSave = {
            name: name,
+           product_code: product_code,
            price: price,
            supplier: supplier,
            quantity: quantity,
@@ -69,7 +71,14 @@ const Inventory=()=> {
                                 type="text"
                                 name='name'
                                 className="form-control"
-
+                            />
+                        </div>
+                        <div className="col-md-6 mb-3">
+                            <label className="form-label">Product Code</label>
+                            <input
+                                type="text"
+                                name='product_code'
+                                className="form-control"
                             />
                         </div>
                         <div className="col-md-6 mb-3">

@@ -3,19 +3,18 @@ import Constents from "../../../Constents";
 
 const ExpenseType = () => {
     const [expenseType,setExpenseType]=useState([]);
-    // const [current, setCurrent] = useState(false);
     const handleExpenseName = (e) => {
         e.preventDefault();
         const name = e.target.name.value
-        const expenseType = {
+        const expenseTypes = {
             name: name,
-        }
+            }
         fetch(Constents.BASE_URL+'/expense-type', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(expenseType),
+            body: JSON.stringify(expenseTypes),
         })
             .then(res => res.json())
             .then(data => {
@@ -28,10 +27,8 @@ const ExpenseType = () => {
         fetch(Constents.BASE_URL+'/expense-type')
             .then((response) => response.json())
             .then((data) => {
-                // setCurrent(!current)
                 setExpenseType(data)
                 });
-
     }, []);
     return (
         <div className='container'>

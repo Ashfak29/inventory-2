@@ -4,7 +4,7 @@ import Constents from "../../../Constents";
 const OrderManagement = () => {
     const [deliveryAgent,setDeliveryAgent]=useState([]);
     const [input ,setInput] = useState({});
-
+    console.log(input)
     const handleInput =(e)=>{
         setInput(prevState => ({...prevState, [e.target.name]: e.target.value}))
         console.log(input)
@@ -70,9 +70,9 @@ const OrderManagement = () => {
                             <label className="form-label">Product Code</label>
                             <input
                                 type="text"
-                                name='product_id'
+                                name='product_code'
                                 className="form-control"
-                                value={input.product_id}
+                                value={input.product_code}
                                 onChange={handleInput}
                             />
                         </div>
