@@ -137,7 +137,7 @@ const OrderManagement = () => {
                                 onChange={handleInput}
                             >
 
-                                <option selected >Delivery Agent</option>
+                                <option >Delivery Agent</option>
                                 {
                                     deliveryAgent.map(agent => <option value={agent.id} key={agent.id}>{agent.name}</option>)
                                 }
