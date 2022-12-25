@@ -4,16 +4,58 @@ import '../Invoice/Invoice.css'
 
 const Invoice = () => {
     const [invoiceData, setInvoiceData] = useState([])
-    useEffect(() => {
+
+    const handleDelete = (id) => {
+        fetch(Constents.BASE_URL + '/order/' + id, {
+            method: "DELETE",
+        })
+            .then(res => res.json())
+            .then(data => {
+            })
+            .then(() => {
+                getOrderData()
+            })
+            .catch(error => console.log(error))
+    }
+
+    const handleReturn = (id) => {
+        fetch(Constents.BASE_URL + '/order-return/' + id, {
+            method: "PUT",
+        })
+            .then(res => res.json())
+            .then(data => {
+            })
+            .then(() => {
+                getOrderData()
+            })
+            .catch(error => console.log(error))
+        document.getElementById('cancel').style.display = 'none'
+    }
+
+    const handleStatus = (id) => {
+        fetch(Constents.BASE_URL + '/order/' + id, {
+            method: "PUT",
+        })
+            .then(res => res.json())
+            .then(data => {
+            })
+            .then(() => {
+                getOrderData()
+            })
+            .catch(error => console.log(error))
+    }
+
+    const getOrderData = () => {
         fetch(Constents.BASE_URL + '/invoice')
             .then((response) => response.json())
             .then((data) => {
                 setInvoiceData(data.data)
             });
+    }
+    useEffect(() => {
+        getOrderData();
     }, []);
-    console.log('hello')
-    console.log(invoiceData)
-    console.log('hello mama')
+
     return (
         <div>
             <h2 className='text-center'>Invoice</h2>
@@ -23,6 +65,7 @@ const Invoice = () => {
                 <tr>
                     <th scope="col">Order No</th>
                     <th scope="col">Customer Name</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Address</th>
                     <th scope="col">Area</th>
@@ -33,6 +76,7 @@ const Invoice = () => {
                     <th scope="col">Delivery</th>
                     <th scope="col">Image</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,6 +85,7 @@ const Invoice = () => {
                     <tr key={index}>
                         <th scope="row">{invoiceItem.id}</th>
                         <td>{invoiceItem.customer_name}</td>
+                        <td>{invoiceItem.date}</td>
                         <td>{invoiceItem.phone}</td>
                         <td>{invoiceItem.address}</td>
                         <td>{invoiceItem.area}</td>
@@ -53,13 +98,48 @@ const Invoice = () => {
                             <img className='invoice-img' src={invoiceItem.image} alt="invoiceImage"/>
                         </td>
                         <td>
-                            <button>Pending</button>
+                            {
+                                invoiceItem.status == 0 ?
+                                    <button onClick={() => handleStatus(invoiceItem.id)} type={'button'} style={{
+                                        background: 'yellow',
+                                        color: 'red',
+                                        border: 'none'
+                                    }}>Pending</button>
+                                    : (invoiceItem.status == 1 ?
+                                            <button onClick={() => handleStatus(invoiceItem.id)} type={'button'} style={{
+                                                background: 'skyblue',
+                                                color: 'white',
+                                                border: 'none'
+                                            }}>Shipping</button>
+                                            : (invoiceItem.status == 2 ?
+                                                <button style={{
+                                                    background: 'green',
+                                                    color: 'white',
+                                                    border: 'none'
+                                                }}>Delivered</button>
+                                                : <button style={{background: 'deeppink', color: 'white', border: 'none', display: 'none'}}>Returned</button>
+                                            )
+
+                                    )
+                            }
+                        </td>
+                        <td>
+                            {
+                                invoiceItem.status == 2 ? <button style={{background: 'deeppink', color: 'white', border: 'none', display: 'none'}}>Returned</button>
+                                    : (invoiceItem.status == 3 ? <button style={{background: 'deeppink', color: 'white', border: 'none'}}>Returned</button>
+                                        : <><button id={'cancel'} style={{background: 'red', color: 'white', border: 'none'}}type={'button'} onClick={() => handleDelete(invoiceItem.id)}>Cancel</button>
+                                <button style={{background: 'black',color:'white', border:'none', marginTop:'5px'}} type={'button'} onClick={()=>handleReturn(invoiceItem.id)}>Return</button>
+                                </>)
+
+                            }
                         </td>
                     </tr>
                 ))}
 
                 </tbody>
             </table>
+
+
         </div>
     );
 };
