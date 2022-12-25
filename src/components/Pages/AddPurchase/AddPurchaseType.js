@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Constents from "../../../Constents";
 
 const AddPurchaseType = () => {
+    const [addPurchase,setAddPurchase]=useState([]);
     const handlePurchaseName = (e) => {
         e.preventDefault();
         const name = e.target.name.value
@@ -18,10 +19,21 @@ const AddPurchaseType = () => {
             .then(res => res.json())
             .then(data => {
             })
+            .then(()=>{addPurchaseType()})
             .catch(error => console.log(error))
         e.target.reset();
 
     }
+    const addPurchaseType=()=>{
+        fetch(Constents.BASE_URL+'/purchase-type')
+            .then((response) => response.json())
+            .then((data) => {
+                setAddPurchase(data)
+            });
+    }
+    useEffect(() => {
+        addPurchaseType();
+    }, []);
     return (
         <div className='container'>
             <h1 className='text-center py-2'>Welcome, Book Thorp</h1>
@@ -39,6 +51,20 @@ const AddPurchaseType = () => {
                     </div>
 
                 </form>
+                <table className="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Purchase Type</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {addPurchase.map((purchaseItem, index) => (
+                        <tr key={index}>
+                            <th scope="row">{purchaseItem.name}</th>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     );

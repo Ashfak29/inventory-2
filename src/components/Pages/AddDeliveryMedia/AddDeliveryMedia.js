@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Constents from "../../../Constents";
 
 const AddDeliveryMedia = () => {
-
+    const [addDelivery,setAddDelivery]=useState([]);
     const handleDeliveryMedia = (e) => {
         e.preventDefault();
         const name = e.target.name.value
@@ -22,10 +22,21 @@ const AddDeliveryMedia = () => {
             .then(res => res.json())
             .then(data => {
             })
+            .then(()=>{addDeliveries()})
             .catch(error => console.log(error))
         e.target.reset();
 
     }
+    const addDeliveries=()=>{
+        fetch(Constents.BASE_URL+'/delivery-media')
+            .then((response) => response.json())
+            .then((data) => {
+                setAddDelivery(data)
+            });
+    }
+    useEffect(() => {
+        addDeliveries();
+    }, []);
     return (
         <div className='container'>
             <h1 className='text-center py-2'>Welcome, Book Thorp</h1>
@@ -45,6 +56,22 @@ const AddDeliveryMedia = () => {
                         <button  type="submit" className=" my-2 btn btn-primary">Add Delivery Media</button>
                     </div>
                 </form>
+                <table className="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {addDelivery.map((delivery, index) => (
+                        <tr key={index}>
+                            <th scope="row">{delivery.name}</th>
+                            <th scope="row">{delivery.contact}</th>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     );

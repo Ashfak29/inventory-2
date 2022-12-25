@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Constents from "../../../Constents";
 
 const AddCustomer = () => {
+     const [addCustomer,setAddCustomer]=useState([]);
     const handleCustomer = (e) => {
         e.preventDefault();
         const name = e.target.name.value
@@ -25,9 +26,20 @@ const AddCustomer = () => {
             .then(res => res.json())
             .then(data => {
             })
+            .then(()=>{addCustomers()})
             .catch(error => console.log(error))
         e.target.reset();
     }
+    const addCustomers=()=>{
+        fetch(Constents.BASE_URL+'/customer')
+            .then((response) => response.json())
+            .then((data) => {
+                setAddCustomer(data)
+            });
+    }
+    useEffect(() => {
+        addCustomers();
+    }, []);
     return (
         <div className='container'>
             <h1 className='text-center py-2'>Welcome, Book Thorp</h1>
@@ -55,6 +67,26 @@ const AddCustomer = () => {
                         <button  type="submit" className=" my-2 btn btn-primary">Add Customer</button>
                     </div>
                 </form>
+                <table className="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {addCustomer.map((customer, index) => (
+                        <tr key={index}>
+                            <th scope="row">{customer.name}</th>
+                            <th scope="row">{customer.phone}</th>
+                            <th scope="row">{customer.mail}</th>
+                            <th scope="row">{customer.address}</th>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     );
