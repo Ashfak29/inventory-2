@@ -36,16 +36,16 @@ const SearchProduct = () => {
                         Search
                     </button>
             </form>
-            <div className="row align-items-center">
+            <div className="row pt-5 align-items-center">
                 <div className="col-md-8">
-                    <h3>Product Purchase</h3>
-                    <h4>Product Name:{searchData.productName}</h4>
+                    <h3 className='text-center'>Product Purchase</h3>
+                    <p>Product Name:{searchData.productName}</p>
                     <p>Product Code:{searchData.productCode}</p>
                     <p>Per Product Price:{searchData.perProductPrice}</p>
                     <p>Total Purchasing Price:{searchData.purchasingPrice}</p>
-                    <h3>Total Quantity:{searchData.totalQuantity}</h3>
+                    <p>Total Quantity:{searchData.totalQuantity}</p>
                     <hr/>
-                    <h3>Product Sold</h3>
+                    <h3 className='text-center'>Product Sold</h3>
                     <p>Sold Amount:{searchData.soldPrice}</p>
                     <p>Sold Quantity:{searchData.soldQuantity}</p>
                     <p>Rest Quantity:{searchData.restQuantity}</p>
@@ -62,7 +62,7 @@ const SearchProduct = () => {
                     }
                 </div>
                 <div className="col-md-4">
-                    <img className={'img-fluid'} src={searchData.image} alt="productIamge"/>
+                    <img className={'img-fluid product-img'} src={searchData.image}/>
                 </div>
             </div>
         </div>

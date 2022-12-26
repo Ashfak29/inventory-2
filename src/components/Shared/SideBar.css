@@ -1,5 +1,38 @@
+body{
+    background-image: url("./image (1).png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+h1,h2,h3,h4,h5,h6{
+    color: white;
+}
+th{
+    color: white;
+}
+td{
+    color: white;
+}
+.form-label{
+    color: white;
+}
 p{
     margin: 0;
+    color: gray;
+}
+.product-img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+
 }
 .summery-head {
     display: flex;
@@ -7,13 +40,14 @@ p{
     background: #e1e1e1;
     padding: 20px;
     border-radius: 5px;
-    justify-content: center;
+    justify-content: space-around;
+    height: 100px;
 }
 .sidebar {
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: #f1f1f1;
+    background-color: #ffffff21;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -21,14 +55,14 @@ p{
 
 .sidebar a {
     display: block;
-    color: black;
+    color: white;
     padding: 8px;
     text-decoration: none;
 }
 
 .sidebar a.active {
-    background-color: #04AA6D;
-    color: white;
+    background-color: #545656;
+    color: white !important;
 }
 
 .sidebar a:hover:not(.active) {
@@ -59,4 +93,7 @@ div.content {
         text-align: center;
         float: none;
     }
+}
+.summery-head i{
+    font-size: 40px;
 }

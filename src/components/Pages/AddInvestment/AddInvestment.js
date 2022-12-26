@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Constents from "../../../Constents";
 
 const AddInvestment = () => {
-    // const [addInvest,setAddInvest]=useState([]);
+    const [addInvest,setAddInvest]=useState([]);
     const handleInvestment = (e) => {
         e.preventDefault();
         const name = e.target.name.value
@@ -21,21 +21,21 @@ const AddInvestment = () => {
             .then(res => res.json())
             .then(data => {
             })
-            // .then(()=>{addInvestment()})
+            .then(()=>{addInvestment()})
             .catch(error => console.log(error))
         e.target.reset();
 
     }
-    // const addInvestment=()=>{
-    //     fetch(Constents.BASE_URL+'/investment')
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             setAddInvest(data)
-    //         });
-    // }
-    // useEffect(() => {
-    //     addInvestment();
-    // }, []);
+    const addInvestment=()=>{
+        fetch(Constents.BASE_URL+'/investment')
+            .then((response) => response.json())
+            .then((data) => {
+                setAddInvest(data)
+            });
+    }
+    useEffect(() => {
+        addInvestment();
+    }, []);
     return (
         <div className='container'>
             <h1 className='text-center py-2'>Welcome, Book Thorp</h1>
@@ -55,21 +55,24 @@ const AddInvestment = () => {
                         <button  type="submit" className=" my-2 btn btn-primary">Add Investment</button>
                     </div>
                 </form>
-                {/*<table className="table">*/}
-                {/*    <thead>*/}
-                {/*    <tr>*/}
-                {/*        <th scope="col">Category Name</th>*/}
-                {/*    </tr>*/}
-                {/*    </thead>*/}
-                {/*    <tbody>*/}
-                {/*    {addInvest.map((invest, index) => (*/}
-                {/*        <tr key={index}>*/}
-                {/*            <th scope="row">{invest.name}</th>*/}
-                {/*            <th scope="row">{invest.amount}</th>*/}
-                {/*        </tr>*/}
-                {/*    ))}*/}
-                {/*    </tbody>*/}
-                {/*</table>*/}
+                <table className="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {addInvest.map((invest, index) => (
+                        <tr key={index}>
+                            <th scope="row">{invest.name}</th>
+                            <th scope="row">{invest.amount}</th>
+                            <th scope="row">{invest.created_at.slice(0,10)}</th>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     );

@@ -76,7 +76,8 @@ const Expense = () => {
                         <tr>
                             <th scope="col">Expense Name</th>
                             <th scope="col">Amount</th>
-                            <th scope="col">Expense Id</th>
+                            <th scope="col">Expense Type</th>
+                            <th scope="col">Date</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -85,6 +86,7 @@ const Expense = () => {
                                 <th scope="row">{expenseItem.name}</th>
                                 <td>{expenseItem.amount}</td>
                                 <td>{expenseItem.expense_type.name}</td>
+                                <td>{expenseItem.created_at.slice(0,10)}</td>
                              </tr>
                         ))}
 
