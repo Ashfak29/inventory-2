@@ -13,7 +13,7 @@ const Home = () => {
     }, []);
     return (
         <div>
-            <h1 className='text-center py-2'>Welcome, Book Thorp</h1>
+            <h1 className='text-center py-2'>Welcome</h1>
             <div className="container">
                 <div className="summery-main">
                     <h2>Summery</h2>

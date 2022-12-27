@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Constents from "../../../Constents";
 import '../Inventory/Inventory.css'
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const Inventory = () => {
@@ -9,8 +10,6 @@ const Inventory = () => {
     const [purchaseType, setpurchaseType] = useState([]);
     const [input, setInput] = useState({});
     const [errors, setErrors] = useState([]);
-
-
     const handleInput = (e) => {
         setInput(prevState => ({...prevState, [e.target.name]: e.target.value}))
         console.log(input)
@@ -31,25 +30,30 @@ const Inventory = () => {
     }
     const handleSubmit = () => {
         axios.post(Constents.BASE_URL + '/product', input).then(res => {
+            setInput({
+                name: '',
+                product_code: '',
+                price: '',
+                supplier : '',
+                quantity : '',
+                category_id : '',
+                purchase_type_id : '',
+                image : '',
+
+            })
             setErrors([])
-
-
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                toast: true,
+                title: 'Your Product Added Successfully',
+                showConfirmButton: false,
+                timer: 3000
+            })
         }).catch(errors => {
             errors.response.status === 422 ? setErrors(errors.response.data.errors) : setErrors([])
         })
-        //  fetch(Constents.BASE_URL+'/product', {
-        //         method: "POST",
-        //         headers: {
-        //             'content-type': 'application/json'
-        //         },
-        //      body: JSON.stringify(input),
-        //     })
-        //         .then(res => res.json())
-        //         .then(data => {
-        //         })
-        //         .catch(error => console.log(error))
-        //     // // e.target.reset();
-        // }
+
     }
     useEffect(() => {
         fetch(Constents.BASE_URL + '/category')
@@ -62,7 +66,7 @@ const Inventory = () => {
 
     return (
         <div className='container'>
-            <h1 className='text-center py-2'>Welcome, Book Thorp</h1>
+            <h1 className='text-center py-2'>Welcome</h1>
             <div className="add-product-form">
                 <form>
                     <div className="row">

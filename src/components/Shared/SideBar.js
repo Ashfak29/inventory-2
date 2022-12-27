@@ -4,7 +4,6 @@ import {NavLink} from "react-router-dom";
 
 const SideBar = () => {
     const handleShow = () => {
-
         let element = document.getElementById("navbarNav");
         element.classList.toggle("sidebar-tgl");
 
@@ -16,8 +15,7 @@ const SideBar = () => {
                 <i className="fa-solid fa-bars-staggered"></i>
             </div>
             <div className="sidebar sidebar-tgl d-sm-block" id="navbarNav">
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0" onClick={handleShow}>
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/">Dashboard</NavLink>
                     </li>

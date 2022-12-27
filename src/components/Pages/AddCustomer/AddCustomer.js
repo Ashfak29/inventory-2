@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Constents from "../../../Constents";
+import Swal from "sweetalert2";
 
 const AddCustomer = () => {
      const [addCustomer,setAddCustomer]=useState([]);
@@ -26,6 +27,16 @@ const AddCustomer = () => {
             .then(res => res.json())
             .then(data => {
             })
+            .then(()=>{
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    toast: true,
+                    title: 'Your Customer Added Successfully',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            })
             .then(()=>{addCustomers()})
             .catch(error => console.log(error))
         e.target.reset();
@@ -42,7 +53,7 @@ const AddCustomer = () => {
     }, []);
     return (
         <div className='container'>
-            <h1 className='text-center py-2'>Welcome, Book Thorp</h1>
+            <h1 className='text-center py-2'>Welcome</h1>
             <div className="add-product-form">
                 <form onSubmit={handleCustomer}>
                     <div className="row">

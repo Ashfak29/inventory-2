@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import Constents from "../../../Constents";
+import Swal from "sweetalert2";
 
 const ExpenseType = () => {
-    const [expenseType,setExpenseType]=useState([]);
+    const [expenseType, setExpenseType] = useState([]);
     const handleExpenseName = (e) => {
         e.preventDefault();
         const name = e.target.name.value
         const expenseTypes = {
             name: name,
-            }
-        fetch(Constents.BASE_URL+'/expense-type', {
+        }
+        fetch(Constents.BASE_URL + '/expense-type', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -19,13 +20,25 @@ const ExpenseType = () => {
             .then(res => res.json())
             .then(data => {
             })
-            .then(()=>{getExpense()})
+            .then(() => {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    toast: true,
+                    title: 'Your Expense Type Create Successfully',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            })
+            .then(() => {
+                getExpense()
+            })
             .catch(error => console.log(error))
         e.target.reset();
 
     }
-    const getExpense=()=>{
-        fetch(Constents.BASE_URL+'/expense-type')
+    const getExpense = () => {
+        fetch(Constents.BASE_URL + '/expense-type')
             .then((response) => response.json())
             .then((data) => {
                 setExpenseType(data)
@@ -36,7 +49,7 @@ const ExpenseType = () => {
     }, []);
     return (
         <div className='container'>
-            <h1 className='text-center py-2'>Welcome, Book Thorp</h1>
+            <h1 className='text-center py-2'>Welcome</h1>
             <div className="add-product-form">
                 <form onSubmit={handleExpenseName}>
                     <div className="row justify-content-center">
@@ -47,7 +60,7 @@ const ExpenseType = () => {
 
                     </div>
                     <div className='text-center'>
-                        <button  type="submit" className=" my-2 btn btn-primary">Add Expense Type</button>
+                        <button type="submit" className=" my-2 btn btn-primary">Add Expense Type</button>
                     </div>
                 </form>
             </div>
@@ -60,7 +73,9 @@ const ExpenseType = () => {
                     </thead>
                     <tbody>
                     {
-                        expenseType.map(expense => <tr value={expense.id} key={expense.id}><td>{expense.name}</td></tr>)
+                        expenseType.map(expense => <tr value={expense.id} key={expense.id}>
+                            <td>{expense.name}</td>
+                        </tr>)
                     }
                     </tbody>
                 </table>

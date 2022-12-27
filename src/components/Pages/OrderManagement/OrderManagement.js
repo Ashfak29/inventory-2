@@ -1,21 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import Constents from "../../../Constents";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const OrderManagement = () => {
-    const [deliveryAgent,setDeliveryAgent]=useState([]);
-    const [input ,setInput] = useState({});
+    const [deliveryAgent, setDeliveryAgent] = useState([]);
+    const [input, setInput] = useState({});
     const [errors, setErrors] = useState([]);
     console.log(input)
-    const handleInput =(e)=>{
+    const handleInput = (e) => {
         setInput(prevState => ({...prevState, [e.target.name]: e.target.value}))
         console.log(input)
     }
-    const handleImageUpload=(e)=>{
+    const handleImageUpload = (e) => {
         let photo = e.target.files[0]
         let reader = new FileReader()
-        reader.onloadend= ()=>{
-            setInput(prevState => ({...prevState, [e.target.name]:reader.result}))
+        reader.onloadend = () => {
+            setInput(prevState => ({...prevState, [e.target.name]: reader.result}))
         }
         reader.readAsDataURL(photo)
 
@@ -25,42 +26,45 @@ const OrderManagement = () => {
     }
     const handleOrder = () => {
         axios.post(Constents.BASE_URL + '/order', input).then(res => {
+            setInput({
+                customer_name: '',
+                phone : '',
+                product_code: '',
+                price: '',
+                quantity : '',
+                discount : '',
+                address : '',
+                area : '',
+                delivery_media_id : '',
+                weight : '',
+                image : '',
+            })
             setErrors([])
-
-
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                toast: true,
+                title: 'Your Order Create Successfully',
+                showConfirmButton: false,
+                timer: 3000
+            })
         }).catch(errors => {
             errors.response.status === 422 ? setErrors(errors.response.data.errors) : setErrors([])
         })
     }
-    // const handleOrder = () => {
-    //             fetch(Constents.BASE_URL+'/order', {
-    //         method: "POST",
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(input),
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //         })
-    //         .then(()=>{ setErrors([])})
-    //         .catch(error => console.log(error))
-    //     // e.target.reset();
-    //
-    // }
     useEffect(() => {
-        fetch(Constents.BASE_URL+'/delivery-media')
+        fetch(Constents.BASE_URL + '/delivery-media')
             .then((response) => response.json())
             .then((data) => setDeliveryAgent(data));
     }, []);
     return (
         <div className='container'>
-            <h1 className='text-center py-2'>Welcome, Book Thorp</h1>
+            <h1 className='text-center py-2'>Welcome</h1>
             <div className="add-product-form">
                 <form>
                     <div className="row">
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Coustomer Name</label>
+                            <label className="form-label">Customer Name</label>
                             <input
                                 type="text"
                                 name='customer_name'
@@ -69,6 +73,9 @@ const OrderManagement = () => {
                                 onChange={handleInput}
 
                             />
+                            <p className={'login-error-message'}><small
+                                className={'text-danger'}>{errors.customer_name != undefined ? errors.customer_name[0] : null}</small>
+                            </p>
                         </div>
                         <div className="col-md-6 mb-3">
                             <label className="form-label">Phone Number</label>
@@ -79,6 +86,9 @@ const OrderManagement = () => {
                                 value={input.phone}
                                 onChange={handleInput}
                             />
+                            <p className={'login-error-message'}><small
+                                className={'text-danger'}>{errors.phone != undefined ? errors.phone[0] : null}</small>
+                            </p>
                         </div>
                         <div className="col-md-6 mb-3">
                             <label className="form-label">Product Code</label>
@@ -89,6 +99,9 @@ const OrderManagement = () => {
                                 value={input.product_code}
                                 onChange={handleInput}
                             />
+                            <p className={'login-error-message'}><small
+                                className={'text-danger'}>{errors.product_code != undefined ? errors.product_code[0] : null}</small>
+                            </p>
                         </div>
                         <div className="col-md-6 mb-3">
                             <label className="form-label">Price</label>
@@ -99,6 +112,9 @@ const OrderManagement = () => {
                                 value={input.price}
                                 onChange={handleInput}
                             />
+                            <p className={'login-error-message'}><small
+                                className={'text-danger'}>{errors.price != undefined ? errors.price[0] : null}</small>
+                            </p>
                         </div>
                         <div className="col-md-6 mb-3">
                             <label htmlFor="exampleInputEmail1" className="form-label">Quantity</label>
@@ -109,6 +125,9 @@ const OrderManagement = () => {
                                 value={input.quantity}
                                 onChange={handleInput}
                             />
+                            <p className={'login-error-message'}><small
+                                className={'text-danger'}>{errors.quantity != undefined ? errors.quantity[0] : null}</small>
+                            </p>
                         </div>
                         <div className="col-md-6 mb-3">
                             <label htmlFor="exampleInputPassword1" className="form-label">Discount</label>
@@ -119,6 +138,9 @@ const OrderManagement = () => {
                                 value={input.discount}
                                 onChange={handleInput}
                             />
+                            <p className={'login-error-message'}><small
+                                className={'text-danger'}>{errors.discount != undefined ? errors.discount[0] : null}</small>
+                            </p>
                         </div>
                         <div className="col-md-6 mb-3">
                             <label htmlFor="exampleInputEmail1" className="form-label">Address</label>
@@ -129,6 +151,9 @@ const OrderManagement = () => {
                                 value={input.address}
                                 onChange={handleInput}
                             />
+                            <p className={'login-error-message'}><small
+                                className={'text-danger'}>{errors.address != undefined ? errors.address[0] : null}</small>
+                            </p>
                         </div>
                         <div className="col-md-6 mb-3">
                             <label htmlFor="exampleInputPassword1" className="form-label">Area</label>
@@ -139,6 +164,9 @@ const OrderManagement = () => {
                                 value={input.area}
                                 onChange={handleInput}
                             />
+                            <p className={'login-error-message'}><small
+                                className={'text-danger'}>{errors.area != undefined ? errors.area[0] : null}</small>
+                            </p>
                         </div>
                         <div className="col-md-6 mb-3">
                             {/*<label htmlFor="delivery_agent" className="form-label">delivery</label>*/}
@@ -151,30 +179,16 @@ const OrderManagement = () => {
                                 onChange={handleInput}
                             >
 
-                                <option >Delivery Agent</option>
+                                <option>Delivery Agent</option>
                                 {
-                                    deliveryAgent.map(agent => <option value={agent.id} key={agent.id}>{agent.name}</option>)
+                                    deliveryAgent.map(agent => <option value={agent.id}
+                                                                       key={agent.id}>{agent.name}</option>)
                                 }
                             </select>
+                            <p className={'login-error-message'}><small
+                                className={'text-danger'}>{errors.delivery_media_id != undefined ? errors.delivery_media_id[0] : null}</small>
+                            </p>
                         </div>
-                        {/*<div className="col-md-6 mb-3">*/}
-                        {/*    <select className="form-select" aria-label="Default select example">*/}
-                        {/*        <option selected>Want to add more Product</option>*/}
-                        {/*        <option value="1">Yes</option>*/}
-                        {/*        <option value="2">No</option>*/}
-                        {/*    </select>*/}
-                        {/*</div>*/}
-                        {/*<div className=" col-md-6 mb-3">*/}
-                        {/*    <input*/}
-                        {/*        className="form-control"*/}
-                        {/*        name='image'*/}
-                        {/*        type="file"*/}
-                        {/*        id="formFileMultiple" multiple*/}
-                        {/*        onChange={handleImageUpload}*/}
-
-
-                        {/*    />*/}
-                        {/*</div>*/}
                         <div className="col-md-6 mb-3">
                             <input
                                 type="number"
@@ -193,20 +207,20 @@ const OrderManagement = () => {
                                 name="image"
                                 onChange={handleImageUpload}
                             />
-                            <p className={'login-error-message'}><small
-                                className={'text-danger'}>{errors.image != undefined ? errors.image[0] : null}</small>
-                            </p>
-
                             <div className={'product'} onClick={uploadImage}>
                                 <h2 style={input.image != undefined && input.image != '' ? {display: 'none'} : {display: 'block'}}>Upload
                                     Product</h2>
                                 <img src={input.image} className={'img-fluid'} alt=""/>
                             </div>
+                            <p className={'login-error-message text-center'}><small
+                                className={'text-danger'}>{errors.image != undefined ? errors.image[0] : null}</small>
+                            </p>
                         </div>
 
                     </div>
                     <div className='text-center'>
-                        <button onClick={handleOrder}  type="button" className=" my-2 btn btn-primary">Create Order</button>
+                        <button onClick={handleOrder} type="button" className=" my-2 btn btn-primary">Create Order
+                        </button>
                     </div>
 
                 </form>

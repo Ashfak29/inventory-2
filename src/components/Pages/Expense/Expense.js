@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Constents from "../../../Constents";
+import Swal from "sweetalert2";
 
 const Expense = () => {
     const [expenseType,setExpenseType]=useState([]);
@@ -26,6 +27,16 @@ const Expense = () => {
             .then(data => {
             })
             .then(()=>{addExpenseApi()})
+            .then(()=>{
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    toast: true,
+                    title: 'Your Expense Create Successfully',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            })
             .catch(error => console.log(error))
         e.target.reset();
 
@@ -45,7 +56,7 @@ const Expense = () => {
     return (
         <div>
             <div className='container'>
-                <h1 className='text-center py-2'>Welcome, Book Thorp</h1>
+                <h1 className='text-center py-2'>Welcome</h1>
                 <div className="add-product-form">
                     <form onSubmit={handleExpense}>
                         <div className="row">
@@ -90,11 +101,9 @@ const Expense = () => {
                                     <td>{expenseItem.created_at.slice(0,10)}</td>
                                 </tr>
                             ))}
-
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Constents from "../../../Constents";
+import Swal from "sweetalert2";
 
 const AddCategory = () => {
     const [addCategory,setAddCategory]=useState([]);
@@ -19,6 +20,16 @@ const AddCategory = () => {
             .then(res => res.json())
             .then(data => {
             })
+            .then(()=>{
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    toast: true,
+                    title: 'Your Category Create Successfully',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            })
             .then(()=>{addCategories()})
             .catch(error => console.log(error))
         e.target.reset();
@@ -35,7 +46,7 @@ const AddCategory = () => {
     }, []);
     return (
         <div className='container'>
-            <h1 className='text-center py-2'>Welcome, Book Thorp</h1>
+            <h1 className='text-center py-2'>Welcome</h1>
             <div className="add-product-form">
                 <form onSubmit={handleCategoryName}>
                     <div className="row justify-content-center">

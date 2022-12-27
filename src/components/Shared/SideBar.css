@@ -1,8 +1,10 @@
 body{
     background-image: url("./image (1).png");
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-size:cover;
+    background-position: top;
+    background-attachment: fixed;
+
 }
 h1,h2,h3,h4,h5,h6{
     color: white;
