@@ -37,7 +37,7 @@ const SearchProduct = () => {
                     </button>
             </form>
             <div className="row pt-5 align-items-center">
-                <div className="col-md-8">
+                <div className="col-md-8 px-4">
                     <h3 className='text-center'>Product Purchase</h3>
                     <p>Product Name:{searchData.productName}</p>
                     <p>Product Code:{searchData.productCode}</p>
@@ -61,7 +61,7 @@ const SearchProduct = () => {
                             : <p>Your Chalan has been earned and Profit :{Math.abs(searchData.chalan)} taka</p>
                     }
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 text-center">
                     <img className={'img-fluid product-img'} src={searchData.image}/>
                 </div>
             </div>

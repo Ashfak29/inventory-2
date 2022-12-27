@@ -29,6 +29,19 @@ const Home = () => {
                         </div>
                         <div className="col-lg-4 mb-3">
                             <div className='summery-head'>
+                                <span className='pe-3'><i className="fa-solid fa-chart-line"></i></span>
+                                <div className="summery-inner">
+                                    {
+                                        dashboardData.profit > 0 ? <p> Profit</p>
+                                            : (dashboardData.profit == 0 ? <p>Break Even Point</p>
+                                                : <p>Loss</p>)
+                                    }
+                                    <p>Amount: {dashboardData.profit*-1} Taka</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 mb-3">
+                            <div className='summery-head'>
                                 <span className='pe-3'><i className="fa-solid fa-store"></i></span>
                                 <div className="summery-inner">
                                     <p> Product On Hand</p>
@@ -38,15 +51,15 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        {/*<div className="col-lg-4 mb-3">*/}
-                        {/*    <div className='summery-head'>*/}
-                        {/*        <span className='pe-3'><i className="fa-solid fa-store"></i></span>*/}
-                        {/*        <div className="summery-inner">*/}
-                        {/*            <p> Product On Hand </p>*/}
-                        {/*            <p>Amount: 2000000.00 Taka</p>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
+                        <div className="col-lg-4 mb-3">
+                            <div className='summery-head'>
+                                <span className='pe-3'><i className="fa-solid fa-cart-shopping"></i></span>
+                                <div className="summery-inner">
+                                    <p> Total Purchase </p>
+                                    <p>Amount: {dashboardData.totalPurchase} Taka</p>
+                                </div>
+                            </div>
+                        </div>
                         <div className="col-lg-4 mb-3">
                             <div className='summery-head'>
                                 <span className='pe-3'><i className="fa-solid fa-truck"></i></span>
@@ -58,16 +71,16 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        {/*<div className="col-lg-4 mb-3">*/}
-                        {/*    <div className='summery-head'>*/}
-                        {/*        <span className='pe-3'><i className="fa-solid fa-truck"></i></span>*/}
-                        {/*        <div className="summery-inner">*/}
-                        {/*            <p> Total Delivered</p>*/}
-                        {/*            <p>Amount: 2000000.00 Taka</p>*/}
+                        <div className="col-lg-4 mb-3">
+                            <div className='summery-head'>
+                                <span className='pe-3'><i className="fa-solid fa-hand-holding-dollar"></i></span>
+                                <div className="summery-inner">
+                                    <p>Cash Liquid</p>
+                                    <p>Amount: {dashboardData.cashLiquid} Taka</p>
 
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
+                                </div>
+                            </div>
+                        </div>
                         <div className="col-lg-4 mb-3">
                             <div className='summery-head'>
                                 <span className='pe-3'><i className="fa-solid fa-right-left"></i></span>
@@ -78,15 +91,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        {/*<div className="col-lg-4 mb-3">*/}
-                        {/*    <div className='summery-head'>*/}
-                        {/*        <span className='pe-3'><i className="fa-solid fa-right-left"></i></span>*/}
-                        {/*        <div className="summery-inner">*/}
-                        {/*            <p> Total Return</p>*/}
-                        {/*            <p>Amount: 2000000.00 Taka</p>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
+
                         <div className="col-lg-4 mb-3">
                             <div className='summery-head'>
                                 <span className='pe-3'><i className="fa-solid fa-cart-flatbed"></i></span>
@@ -109,7 +114,7 @@ const Home = () => {
                         </div>
                         <div className="col-lg-4 mb-3">
                             <div className='summery-head'>
-                                <span className='pe-3'><i className="fa-solid fa-cart-flatbed"></i></span>
+                                <span className='pe-3'><i className="fa-solid fa-file-invoice-dollar"></i></span>
                                 <div className="summery-inner">
                                     <p> Advance Payment</p>
                                     <p>Amount: {dashboardData.advancePayment} Taka</p>
@@ -119,7 +124,7 @@ const Home = () => {
                         </div>
                         <div className="col-lg-4 mb-3">
                             <div className='summery-head'>
-                                <span className='pe-3'><i className="fa-solid fa-hourglass-half"></i></span>
+                                <span className='pe-3'><i className="fa-solid fa-money-bills"></i></span>
                                 <div className="summery-inner">
                                     <p>Accounts Payable</p>
                                     <p>Amount: {dashboardData.accountsPayable} Taka</p>

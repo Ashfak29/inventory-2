@@ -56,22 +56,25 @@ const AddDeliveryMedia = () => {
                         <button  type="submit" className=" my-2 btn btn-primary">Add Delivery Media</button>
                     </div>
                 </form>
-                <table className="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Phone</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {addDelivery.map((delivery, index) => (
-                        <tr key={index}>
-                            <th scope="row">{delivery.name}</th>
-                            <th scope="row">{delivery.contact}</th>
+                <div className='table-responsive'>
+                    <table className="table text-center ">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
                         </tr>
-                    ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {addDelivery.map((delivery, index) => (
+                            <tr key={index}>
+                                <th scope="row">{delivery.name}</th>
+                                <th scope="row">{delivery.contact}</th>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     );

@@ -3,10 +3,21 @@ import './SideBar.css'
 import {NavLink} from "react-router-dom";
 
 const SideBar = () => {
+    const handleShow = () => {
+
+        let element = document.getElementById("navbarNav");
+        element.classList.toggle("sidebar-tgl");
+
+    }
+
     return (
         <div>
-            <div className="sidebar" id="navbarNav">
-                <ul className="navbar-nav">
+            <div className='d-block d-sm-none' onClick={handleShow}>
+                <i className="fa-solid fa-bars-staggered"></i>
+            </div>
+            <div className="sidebar sidebar-tgl d-sm-block" id="navbarNav">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/">Dashboard</NavLink>
                     </li>
@@ -44,17 +55,6 @@ const SideBar = () => {
                         <NavLink className='nav-link' to="expense-type">Add Expense Type</NavLink>
                     </li>
                 </ul>
-
-
-
-
-
-
-
-
-
-
-
 
 
             </div>

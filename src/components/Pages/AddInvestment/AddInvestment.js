@@ -55,24 +55,27 @@ const AddInvestment = () => {
                         <button  type="submit" className=" my-2 btn btn-primary">Add Investment</button>
                     </div>
                 </form>
-                <table className="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Date</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {addInvest.map((invest, index) => (
-                        <tr key={index}>
-                            <th scope="row">{invest.name}</th>
-                            <th scope="row">{invest.amount}</th>
-                            <th scope="row">{invest.created_at.slice(0,10)}</th>
+                <div className='table-responsive'>
+                    <table className="table text-center">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Date</th>
                         </tr>
-                    ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {addInvest.map((invest, index) => (
+                            <tr key={index}>
+                                <th scope="row">{invest.name}</th>
+                                <th scope="row">{invest.amount}</th>
+                                <th scope="row">{invest.created_at.slice(0,10)}</th>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     );

@@ -51,20 +51,23 @@ const AddPurchaseType = () => {
                     </div>
 
                 </form>
-                <table className="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Purchase Type</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {addPurchase.map((purchaseItem, index) => (
-                        <tr key={index}>
-                            <th scope="row">{purchaseItem.name}</th>
+                <div className='table-responsive'>
+                    <table className="table ">
+                        <thead>
+                        <tr>
+                            <th scope="col">Purchase Type</th>
                         </tr>
-                    ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {addPurchase.map((purchaseItem, index) => (
+                            <tr key={index}>
+                                <th scope="row">{purchaseItem.name}</th>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     );

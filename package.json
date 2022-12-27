@@ -1,5 +1,6 @@
 {
   "name": "inventory-management",
+  "homepage": "http://mgtsystembd.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

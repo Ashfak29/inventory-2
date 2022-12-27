@@ -48,20 +48,23 @@ const AddCategory = () => {
                         <button type="submit" className=" my-2 btn btn-primary">Add Category</button>
                     </div>
                 </form>
-                <table className="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Category Name</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {addCategory.map((categories, index) => (
-                        <tr key={index}>
-                            <th scope="row">{categories.name}</th>
+                <div className='table-responsive'>
+                    <table className="table ">
+                        <thead>
+                        <tr>
+                            <th scope="col">Category Name</th>
                         </tr>
-                    ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {addCategory.map((categories, index) => (
+                            <tr key={index}>
+                                <th scope="row">{categories.name}</th>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+
 
             </div>
         </div>

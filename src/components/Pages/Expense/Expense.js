@@ -71,27 +71,30 @@ const Expense = () => {
                         </div>
 
                     </form>
-                    <table className="table text-center">
-                        <thead>
-                        <tr>
-                            <th scope="col">Expense Name</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Expense Type</th>
-                            <th scope="col">Date</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {addExpense.map((expenseItem, index) => (
-                            <tr key={index}>
-                                <th scope="row">{expenseItem.name}</th>
-                                <td>{expenseItem.amount}</td>
-                                <td>{expenseItem.expense_type.name}</td>
-                                <td>{expenseItem.created_at.slice(0,10)}</td>
-                             </tr>
-                        ))}
+                    <div className=' table-responsive'>
+                        <table className="table text-center">
+                            <thead>
+                            <tr>
+                                <th scope="col">Expense Name</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Expense Type</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {addExpense.map((expenseItem, index) => (
+                                <tr key={index}>
+                                    <th scope="row">{expenseItem.name}</th>
+                                    <td>{expenseItem.amount}</td>
+                                    <td>{expenseItem.expense_type.name}</td>
+                                    <td>{expenseItem.created_at.slice(0,10)}</td>
+                                </tr>
+                            ))}
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
         </div>

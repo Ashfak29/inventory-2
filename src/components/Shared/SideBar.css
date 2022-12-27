@@ -59,12 +59,18 @@ li{
     padding: 8px;
     text-decoration: none;
 }
-
+.fa-bars-staggered{
+    color: white;
+    font-size: 30px;
+}
 .sidebar a.active {
     background-color: #545656;
     color: white !important;
 }
+.sidebar-tgl{
+    display: none;
 
+}
 .sidebar a:hover:not(.active) {
     background-color: #555;
     color: white;

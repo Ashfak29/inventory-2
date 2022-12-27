@@ -67,26 +67,29 @@ const AddCustomer = () => {
                         <button  type="submit" className=" my-2 btn btn-primary">Add Customer</button>
                     </div>
                 </form>
-                <table className="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Address</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {addCustomer.map((customer, index) => (
-                        <tr key={index}>
-                            <th scope="row">{customer.name}</th>
-                            <th scope="row">{customer.phone}</th>
-                            <th scope="row">{customer.mail}</th>
-                            <th scope="row">{customer.address}</th>
+                <div className='table-responsive'>
+                    <table className="table text-center">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Address</th>
                         </tr>
-                    ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {addCustomer.map((customer, index) => (
+                            <tr key={index}>
+                                <th scope="row">{customer.name}</th>
+                                <th scope="row">{customer.phone}</th>
+                                <th scope="row">{customer.mail}</th>
+                                <th scope="row">{customer.address}</th>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     );

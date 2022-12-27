@@ -51,8 +51,8 @@ const ExpenseType = () => {
                     </div>
                 </form>
             </div>
-            <div>
-                <table className="table">
+            <div className='table-responsive'>
+                <table className="table ">
                     <thead>
                     <tr>
                         <th scope="col">Type</th>
