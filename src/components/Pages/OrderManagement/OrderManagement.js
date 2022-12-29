@@ -26,6 +26,14 @@ const OrderManagement = () => {
     }
     const handleOrder = () => {
         axios.post(Constents.BASE_URL + '/order', input).then(res => {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                toast: true,
+                title:res.data.msg,
+                showConfirmButton: false,
+                timer: 3000
+            })
             setInput({
                 customer_name: '',
                 phone : '',
@@ -40,15 +48,8 @@ const OrderManagement = () => {
                 image : '',
             })
             setErrors([])
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                toast: true,
-                title: 'Your Order Create Successfully',
-                showConfirmButton: false,
-                timer: 3000
-            })
-        }).catch(errors => {
+        })
+            .catch(errors => {
             errors.response.status === 422 ? setErrors(errors.response.data.errors) : setErrors([])
         })
     }

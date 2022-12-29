@@ -71,6 +71,7 @@ const Invoice = () => {
                         <th scope="col">Area</th>
                         <th scope="col">Product Code</th>
                         <th scope="col">Price</th>
+                        <th scope="col">Discount</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Weight</th>
                         <th scope="col">Delivery</th>
@@ -91,6 +92,7 @@ const Invoice = () => {
                             <td>{invoiceItem.area}</td>
                             <td>{invoiceItem.product_code}</td>
                             <td>{invoiceItem.price}</td>
+                            <td>{invoiceItem.discount}</td>
                             <td>{invoiceItem.quantity}</td>
                             <td>{invoiceItem.weight}</td>
                             <td>{invoiceItem.delivery_media_id}</td>

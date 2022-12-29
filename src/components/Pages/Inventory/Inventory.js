@@ -30,6 +30,14 @@ const Inventory = () => {
     }
     const handleSubmit = () => {
         axios.post(Constents.BASE_URL + '/product', input).then(res => {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                toast: true,
+                title: res.data.msg,
+                showConfirmButton: false,
+                timer: 3000
+            })
             setInput({
                 name: '',
                 product_code: '',
@@ -42,14 +50,8 @@ const Inventory = () => {
 
             })
             setErrors([])
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                toast: true,
-                title: 'Your Product Added Successfully',
-                showConfirmButton: false,
-                timer: 3000
-            })
+
+
         }).catch(errors => {
             errors.response.status === 422 ? setErrors(errors.response.data.errors) : setErrors([])
         })

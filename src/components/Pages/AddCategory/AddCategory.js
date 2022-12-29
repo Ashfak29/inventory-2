@@ -29,6 +29,7 @@ const AddCategory = () => {
                     showConfirmButton: false,
                     timer: 3000
                 })
+
             })
             .then(()=>{addCategories()})
             .catch(error => console.log(error))
