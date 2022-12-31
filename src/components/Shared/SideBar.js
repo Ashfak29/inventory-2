@@ -6,7 +6,11 @@ const SideBar = () => {
     const handleShow = () => {
         let element = document.getElementById("navbarNav");
         element.classList.toggle("sidebar-tgl");
+    }
 
+    const handleLogout = () => {
+      localStorage.removeItem('user')
+        window.location.href = window.location.origin+'/login'
     }
 
     return (
@@ -53,6 +57,8 @@ const SideBar = () => {
                         <NavLink className='nav-link' to="expense-type">Add Expense Type</NavLink>
                     </li>
                 </ul>
+
+                <button onClick={handleLogout}>logout</button>
 
 
             </div>

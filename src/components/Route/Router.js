@@ -12,18 +12,27 @@ import AddInvestment from "../Pages/AddInvestment/AddInvestment";
 import AddCategory from "../Pages/AddCategory/AddCategory";
 import ExpenseType from "../Pages/Expense/ExpenseType";
 import AddPurchaseType from "../Pages/AddPurchase/AddPurchaseType";
+import Login from "../Auth/Login";
+import PrivateRoute from "./PrivateRoute";
+import {useState} from "react";
+
 
 const router = createBrowserRouter([
     {
+        path: '/login',
+        element: <Login/>
+    },
+    {
+
         path: '/', element: <Layout></Layout>,
         children: [
             {
                 path: '/',
-                element:<Home></Home>
+                element:<PrivateRoute> <Home/></PrivateRoute>
             },
             {
                 path: '/inventory',
-                element: <Inventory></Inventory>,
+                element:<PrivateRoute> <Inventory></Inventory></PrivateRoute>,
 
             },
             {
