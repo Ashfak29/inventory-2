@@ -86,6 +86,43 @@ div.content {
 .over{
     overflow: hidden;
 }
+
+.summery-head i{
+    font-size: 40px;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+.form-width{
+    width: 25%;
+}
+.login-btn {
+    border: 2px solid white;
+    padding: 5px 30px;
+    border-radius: 20px;
+    background-color: #41464b;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    font-family: serif;
+}
+.login-btn:hover{
+    background-color: transparent;
+    border: 2px solid red;
+    transition: ease-in-out .5s;
+}
+.log-out-btn {
+    width: 100%;
+    border: none;
+    background-color: #41464b;
+    color: white;
+    margin-top: 20px;
+}
 @media screen and (max-width: 700px) {
     .sidebar {
         width: 100%;
@@ -94,6 +131,9 @@ div.content {
     }
     .sidebar a {float: left;}
     div.content {margin-left: 0;}
+    .form-width{
+        width: 75%;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -101,7 +141,5 @@ div.content {
         text-align: center;
         float: none;
     }
-}
-.summery-head i{
-    font-size: 40px;
+
 }

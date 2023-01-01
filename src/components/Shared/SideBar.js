@@ -58,7 +58,7 @@ const SideBar = () => {
                     </li>
                 </ul>
 
-                <button onClick={handleLogout}>logout</button>
+                <button className='log-out-btn' onClick={handleLogout}>Logout</button>
 
 
             </div>

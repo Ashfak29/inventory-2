@@ -28,11 +28,22 @@ const Login = () => {
     }, []);
 
     return (
-        <div>
-            <input onChange={handleInput} name={'email'} value={input.email} type={'email'}/>
-            <input  onChange={handleInput} name={'password'} value={input.password} type={'password'}/>
+        <div className='login-form'>
+            <form className='form-width'>
+                <div className="mb-3">
+                    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                    <input className="form-control" onChange={handleInput} name={'email'} value={input.email} type={'email'}/>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                    <input className="form-control" onChange={handleInput} name={'password'} value={input.password} type={'password'}/>
+                </div>
+            </form>
             <p>{error}</p>
-            <button onClick={handleLogin}>Login</button>
+            <button onClick={handleLogin} className='login-btn'>Login</button>
+            {/*<input onChange={handleInput} name={'email'} value={input.email} type={'email'}/>*/}
+            {/*<input  onChange={handleInput} name={'password'} value={input.password} type={'password'}/>*/}
+
         </div>
     );
 };

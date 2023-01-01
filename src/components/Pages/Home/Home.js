@@ -36,7 +36,7 @@ const Home = () => {
                                             : (dashboardData.profit == 0 ? <p>Break Even Point</p>
                                                 : <p>Loss</p>)
                                     }
-                                    <p>Amount: {dashboardData.profit*-1} Taka</p>
+                                    <p>Amount: {dashboardData.profit >0? dashboardData.profit : dashboardData.profit*-1} Taka</p>
                                 </div>
                             </div>
                         </div>

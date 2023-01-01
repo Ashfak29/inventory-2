@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/order',
-                element: <OrderManagement></OrderManagement>
+                element: <PrivateRoute><OrderManagement></OrderManagement></PrivateRoute>
             },
             {
                 path: '/add-expense',
@@ -45,11 +45,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/searchProduct',
-                element: <SearchProduct></SearchProduct>
+                element: <PrivateRoute><SearchProduct></SearchProduct></PrivateRoute>
             },
             {
                 path: '/invoice',
-                element: <Invoice></Invoice>
+                element: <PrivateRoute><Invoice></Invoice></PrivateRoute>
             },
             {
                 path: '/add-delivery',
